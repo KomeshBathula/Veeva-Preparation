@@ -16,12 +16,11 @@ public class DocManager {
 
     }
 
-    private static void requestLock(String docId, String userId, long timeStamp) {
+    private static boolean requestLock(String docId, String userId, long timeStamp) {
         Document doc = documents.get(docId);
 
         if (doc == null) {
             System.out.println("Error !! Nothing found");
-            return;
         }
 
         if (!doc.isLocked) {
@@ -29,10 +28,11 @@ public class DocManager {
             doc.accessingUser = userId;
             doc.timeStamp = timeStamp;
             System.out.println("Doc is Locked now");
+            return true;
         }
         else {
             System.out.println("Doc is already locked by another user");
-            return;
+            return false;
         }
     }
 

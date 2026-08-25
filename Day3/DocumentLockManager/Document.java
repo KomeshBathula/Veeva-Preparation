@@ -2,7 +2,7 @@ package Day3.DocumentLockManager;
 
 public class Document {
     String name;
-    boolean isLocked = false;
+    boolean isLocked;
     String accessingUser;
     String docId;
     long timeStamp;
